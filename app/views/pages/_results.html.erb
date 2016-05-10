@@ -1,0 +1,10 @@
+<% posts["statuses"].each do |post| %>
+  <ul>
+    <li><%= post["text"] %><br>
+    <%= post["user"]["name"] %></li>
+    <%= image_tag post["user"]["profile_image_url"], size: "25x25" %>
+    <% if post["entities"]["media"].present? %>
+      <%= image_tag post["entities"]["media"][0]["media_url"] %>
+    <% end %>
+  </ul>  
+<% end %>

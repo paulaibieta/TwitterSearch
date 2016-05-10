@@ -1,0 +1,11 @@
+<h3>Search for Tweets </h3>
+
+<%= form_for @search, url: pages_path, remote:true do |f| %>
+  <%= f.label :search %>
+  <%= f.text_field :query %>
+  <%= f.submit %>
+<% end %>
+
+<div id="results">
+
+</div>
