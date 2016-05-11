@@ -1,30 +1,48 @@
 <div class="row">
 
   <div class="col-md-8">
-    <% posts["statuses"].each do |post| %>
-      <ul>
-        <li><%= post["text"] %><br>
-        <%= post["user"]["name"] %>
-        </li>
-        <%= image_tag post["user"]["profile_image_url"], size: "20x20" %>
-        <% if post["entities"]["media"].present? %>
-          <%= image_tag post["entities"]["media"][0]["media_url"] %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Latest Tweets with #<%= search.query %></h3>
+      </div>  
+      <div class="panel-body">
+        <% posts["statuses"].each do |post| %>
+          Tweet: "<%= post["text"] %>"<br>
+          Username: <%= post["user"]["name"] %><br>
+          Profile image: <%= image_tag post["user"]["profile_image_url"], size: "20x20" %><br>
+            <% if post["entities"]["media"].present? %>
+              Media: <%= image_tag post["entities"]["media"][0]["media_url"] %>
+            <% end %><br>
+          <br>  
         <% end %>
-      </ul>  
-    <% end %>
+      </div> 
+    </div>
   </div>
+
  
   <div class="col-md-4">
-    <% stocks.each do |stock| %>
-      <ul>
-        <li>Ask price: <%= stock.ask %></li>
-        <li>Bid price: <%= stock.bid %></li>
-        <li>Change in price: <%= stock.change %></li>
-        <li>Market capitalization: <%= stock.market_capitalization %></li>
-        <li>Day value change: <%= stock.day_value_change %></li>
-        <li>Earnings per share: <%= stock.earnings_per_share %></li> 
-      </ul>
-    <% end %>  
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Real-time stock info for "<%= search.query %>"</h3>
+      </div>  
+       <div class="panel-body">
+        <% stocks.each do |stock| %>
+          <% if stock.name == "N/A" %>
+            <div class="error-message">
+              <strong><em>Error: ticker not found. Please try your search again.</em></strong>
+            </div>    
+          <% else %>
+            Company name: <%= stock.name %><br>
+            Ask price: <%= stock.ask %><br>
+            Bid price: <%= stock.bid %><br>          
+            Change in price: <%= stock.change %><br>           
+            Market cap.: <%= stock.market_capitalization %><br>          
+            Day value change: <%= stock.day_value_change %><br>          
+            Earnings per share: <%= stock.earnings_per_share %> <br>
+          <% end %><br>
+        <% end %>  
+      </div>  
+    </div>
   </div>
 
 </div>   

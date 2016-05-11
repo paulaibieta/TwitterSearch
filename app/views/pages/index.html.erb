@@ -1,12 +1,25 @@
-<h3>Search for Tweets </h3>
+<div class="jumbotron">
+  <div class="container">
+    <h2>Social Media Ticker</h2>
+    <h4>See what Twitter has to say about your investments</h4><br>
 
-<%= form_for @search, url: pages_path, remote:true do |f| %>
-  <%= f.label :search %>
-  <%= f.text_field :query %>
-  <%= f.submit %>
-<% end %>
+      <body>
+        Instructions: Please enter a company's stock ticker into the search bar.<br>
+      </body><br>
 
+      <%= form_for @search, url: pages_path, remote:true do |f| %>
+        <%= f.label :search %>
+        <%= f.text_field :query %>
+        <%= f.submit %>
+      <% end %>
 
-<div id="results">
+      <br>
+
+      <div id="results">
+      </div>
+
+  </div>
 </div>
- 
+
+
+
