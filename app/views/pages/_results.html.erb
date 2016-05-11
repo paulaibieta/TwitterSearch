@@ -8,10 +8,10 @@
       <div class="panel-body">
         <% posts["statuses"].each do |post| %>
           Tweet: "<%= post["text"] %>"<br>
-          Username: <%= post["user"]["name"] %><br>
-          Profile image: <%= image_tag post["user"]["profile_image_url"], size: "20x20" %><br>
+          Name: <%= post["user"]["name"] %><br>
+          Profile Picture: <%= image_tag post["user"]["profile_image_url"], size: "30x30" %><br>
             <% if post["entities"]["media"].present? %>
-              Media: <%= image_tag post["entities"]["media"][0]["media_url"] %>
+              Image: <%= image_tag post["entities"]["media"][0]["media_url"] %>
             <% end %><br>
           <br>  
         <% end %>
