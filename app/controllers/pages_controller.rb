@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     @search.save!
     if @search.save!
       @posts = TwitterApi.response(@search.query)
+      @stocks = YahooApi.response(@search.query)
     end 
   end 
 

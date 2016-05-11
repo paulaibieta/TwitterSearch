@@ -1,10 +1,32 @@
-<% posts["statuses"].each do |post| %>
-  <ul>
-    <li><%= post["text"] %><br>
-    <%= post["user"]["name"] %></li>
-    <%= image_tag post["user"]["profile_image_url"], size: "25x25" %>
-    <% if post["entities"]["media"].present? %>
-      <%= image_tag post["entities"]["media"][0]["media_url"] %>
+<div class="row">
+
+  <div class="col-md-8">
+    <% posts["statuses"].each do |post| %>
+      <ul>
+        <li><%= post["text"] %><br>
+        <%= post["user"]["name"] %>
+        </li>
+        <%= image_tag post["user"]["profile_image_url"], size: "20x20" %>
+        <% if post["entities"]["media"].present? %>
+          <%= image_tag post["entities"]["media"][0]["media_url"] %>
+        <% end %>
+      </ul>  
     <% end %>
-  </ul>  
-<% end %>
+  </div>
+ 
+  <div class="col-md-4">
+    <% stocks.each do |stock| %>
+      <ul>
+        <li>Ask price: <%= stock.ask %></li>
+        <li>Bid price: <%= stock.bid %></li>
+        <li>Change in price: <%= stock.change %></li>
+        <li>Market capitalization: <%= stock.market_capitalization %></li>
+        <li>Day value change: <%= stock.day_value_change %></li>
+        <li>Earnings per share: <%= stock.earnings_per_share %></li>
+        </li>  
+      </ul>
+    <% end %>  
+  </div>
+
+</div>   
+
